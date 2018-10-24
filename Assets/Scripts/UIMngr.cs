@@ -44,6 +44,7 @@ public class UIMngr : MonoBehaviour
     public GameObject mainMenu;
     public GameObject spellBook;
     private bool audioOn;
+    private GameObject previous;
 
 	// Use this for initialization
 	void Start ()
@@ -53,6 +54,28 @@ public class UIMngr : MonoBehaviour
         options.SetActive(false);
         spellBook.SetActive(false);
         audioOn = true;
+    }
+
+    //Sets the previous menu visited
+    public void SetPrevious(GameObject prev)
+    {
+        previous = prev;
+    }
+    public void ToggleInstructions(GameObject instructions)
+    {
+        if (!instructions.active)
+        {
+            instructions.SetActive(true);
+
+            if (previous != null)
+                previous.SetActive(false);
+        }
+        else
+        {
+            instructions.SetActive(false);
+            if (previous != null)
+                previous.SetActive(true);
+        }
     }
 
     public void ToggleSpellbook(GameObject book)
@@ -78,23 +101,6 @@ public class UIMngr : MonoBehaviour
         mainMenu.SetActive(false);
     }
 
-    public void ToggleInstructions(GameObject instructions)
-    {
-        if (!instructions.active)
-        {
-            instructions.SetActive(true);
-
-            if (mainMenu.active) mainMenu.SetActive(false);
-            else if (options.active) options.SetActive(false);
-        }
-        else
-        {
-            instructions.SetActive(false);
-            if (!mainMenu.active) mainMenu.SetActive(true);
-            else if (!options.active) options.SetActive(true);
-        }
-    }
-
     public void ToggleCredits(GameObject credits)
     {
         if (!credits.active)
@@ -116,14 +122,12 @@ public class UIMngr : MonoBehaviour
     {
         if (hud.active)
         {
-            Debug.Log("options enabled");
             hud.SetActive(false);
             options.SetActive(true);
             overlay.SetActive(true);
         }
         else
         {
-            Debug.Log("options disabled");
             hud.SetActive(true);
             options.SetActive(false);
             overlay.SetActive(false);
