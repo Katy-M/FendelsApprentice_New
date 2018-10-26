@@ -73,26 +73,6 @@ public class DraggableElement : MonoBehaviour {
 			other.gameObject.GetComponent<DraggableElement>().nameText.text = elDic.allElements[elementIndex].elementName;
 			other.gameObject.GetComponent<DraggableElement>().element = elDic.allElements[elementIndex];
 
-
-            // check if this element has not been discovered
-            if(!elDic.allElements[elementIndex].active)
-            {
-                // set created element to active
-                elDic.allElements[elementIndex].active = true;
-
-                // new discovery sound effect stuff goes here
-
-
-                // add element to UI inventory
-                PopulateGrid unlockedItems = FindObjectOfType<PopulateGrid>();
-                unlockedItems.AddItem(elementIndex);
-            }
-            else
-            {
-                // regular discovery sound effect stuff goes here
-
-            }
-
 			
 			Destroy(this.gameObject);
 		}
