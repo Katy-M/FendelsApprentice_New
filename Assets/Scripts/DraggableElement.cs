@@ -94,12 +94,23 @@ public class DraggableElement : MonoBehaviour {
 		public int IsValidRecipe(DraggableElement e1, DraggableElement e2)
 	{
 		Pair p = new Pair(e1.elementID,e2.elementID);
-		Debug.Log(m_rContainer.RecipeDictionary.Keys);
-		if(m_rContainer.RecipeDictionary.ContainsKey(new Pair(e1.elementID,e2.elementID)))
+		int key = -99;
+
+		foreach(Pair v in m_rContainer.RecipeDictionary.Keys)
 		{
-			return 36;
+			 if(v.first == p.first && v.second == p.second)
+			 {
+				 key = m_rContainer.RecipeDictionary[v];
+				 break;
+			 }
 		}
-		return 32;
+		Debug.Log(key);
+		
+		// if(m_rContainer.RecipeDictionary.ContainsKey(new Pair(e1.elementID,e2.elementID)))
+		// {
+		// 	return 36;
+		// }
+		return key;
 	}
 
 

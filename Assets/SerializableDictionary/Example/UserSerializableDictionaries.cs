@@ -20,7 +20,7 @@ using UnityEngine;
 public class RecipeDictionary : SerializableDictionary<Pair, int>{}
 
 [Serializable]
-public class Pair
+public class Pair : IComparable<Pair>
 {
     public int first;
     public int second;
@@ -29,6 +29,19 @@ public class Pair
     {
         first = f;
         second = s;
+    }
+
+    public int CompareTo(Pair other)
+    {
+        if(other == null)
+        {
+            return 1;   
+        }
+        if(this.first == other.first && this.second == other.second)
+        {
+            return 0;
+        }
+        return  -1;
     }
 }
 
