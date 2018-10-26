@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4209142252698442}
   - component: {fileID: 114100177403230072}
   m_Layer: 0
-  m_Name: RecipeContainer 1
+  m_Name: RecipeContainerFilled
   m_TagString: RecipeContainer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
